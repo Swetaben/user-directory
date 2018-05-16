@@ -1,0 +1,65 @@
+body{
+    background-color: lightgoldenrodyellow;
+}
+
+#navid{
+    margin-top: 15px;
+}
+
+#searchbar{
+
+   margin-left: 250px;
+    margin-top: 8px;
+}
+
+.container{
+
+    width:800px;
+}
+
+.myContainer{
+    background-color: grey;
+}
+
+.button1{
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: green;
+    color:white;
+    text-align: center;
+    border: none;
+    padding:8px;
+    margin-left: 3px;
+}
+
+#mySearch{
+    border-radius: 8px;
+    width:200px;
+    border:none;
+    padding:8px;
+}
+
+.myboxes{
+    border: 2px solid white;
+    border-radius: 5px;
+    height: 200px;
+    width: 200px;
+    margin-bottom: 15px;
+    color: white;
+    float:left;
+    margin-left: 40px;
+}
+
+.myInfo{
+    margin-left: 5px;
+    margin-top: 5px;
+    font-size: 18px;
+    word-wrap: break-word
+}
+.male{
+    border: 3px solid deepskyblue;
+}
+
+.female{
+    border: 3px solid hotpink;
+}

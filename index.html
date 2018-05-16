@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="mycss.css">
+
+</head>
+<body ng-controller="myCtrl">
+    <div id="navid" class="navbar navbar-inverse">
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#">Female</a></li>
+            <li><a href="#">Male</a></li>
+            <li><a href="#">Child</a></li>
+        </ul>
+    </div>
+
+    <div class="container myContainer" >
+        <p id="searchbar"><input id="mySearch" type="text" ng-model="searchName" placeholder="Enter Name ">
+            <button class="button1">SEARCH</button>
+        </p>
+        <hr>
+        <div class="myboxes {{x.gender=='M'?'male':'female'}}" ng-repeat="x in data |filter : searchName" >
+
+
+            <p class="myInfo">Id:<span class="myId">{{x.id}}</span></p>
+            <p class="myInfo">Name:<span class="myName">{{x.name}}</span></p>
+            <p class="myInfo">Email-Id: <span class="myEmail">{{x.email}}</span></p>
+
+            <p class="myInfo">City:<span class="myCity">{{x.city}}</span></p>
+
+        </div>
+
+
+
+    </div>
+
+
+    <script>
+        // by controller method
+//        <!--var app=angular.module("myApp",[]);-->
+//        <!--app.controller("myCtrl",function($scope,$http){-->
+//            <!--$http.get('data.json')-->
+//                <!--.then(function(response){-->
+//                    <!--$scope.data=response.data-->
+//                <!--},-->
+//                <!--function(error){-->
+//                    <!--$scope.error=error-->
+//                <!--});-->
+//        <!--});-->
+
+
+
+    var app=angular.module("myApp",[]);
+//by service method
+//    app.service("myService",function($http){
+//        this.getData = function() {
+//            return $http.get("data.json");
+//        };
+//    });
+
+//by factory method
+    app.factory("myService",function($http){
+        return {
+            getData:function(){
+               return $http.get("data.json");
+            }
+
+        };
+    });
+
+    app.controller("myCtrl",function($scope,myService){
+        myService.getData().then(function(response){
+            $scope.data=response.data;
+        });
+    });
+
+    </script>
+</body>
+</html>
